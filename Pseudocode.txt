@@ -1,0 +1,7 @@
+//App only shows business hours of the day
+//Not multiple days
+//App shows current date on top
+
+//Make containers showing business hours
+//Make save button
+//Understand documentation for moment.js
