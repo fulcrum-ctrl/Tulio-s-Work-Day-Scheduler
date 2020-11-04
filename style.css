@@ -80,10 +80,13 @@ textarea{
   background-color: #06AED5;
   color: white;
   display: block;
-  height: 80px;
-  width:180px;
-  
-}
+  height: 100%;
+  width:100%;
+  background-image: url(Assets/diskette.png);
+  background-size: 70%; 
+  background-position: center
+};
+
 
 .saveBtn i:hover {
   font-size: 20px;
