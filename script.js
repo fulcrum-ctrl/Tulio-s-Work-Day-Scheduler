@@ -9,26 +9,19 @@ function update(){
 }
 setInterval(update, 1000);
 
-
-//var x = "toDoOne";
-//var y = document.getElementById(x);
-//console.log("This is y: " + y);
-//y.style.backgroundColor = "gray";
-
 function colorScheme(){
     var listRet = ["toDoOne","toDoTwo","toDoThree","toDoFour","toDoFive","toDoSix","toDoSeven","toDoEight"];
     for (index=0;index<9;index++){
         var divTemp = document.getElementById(listRet[index]);
         var timetag = divTemp.getAttribute("oClock");
-        if(timetag<hour){
-            divTemp.style.backgroundColor = "gray"
+        if(timetag>hour){
+            divTemp.style.backgroundColor = "lightgray";
         }
-        else if (timetag>hour){
-            
-            divTemp.style.backgroundColor = "aqua"
+        else if (timetag<hour){
+            divTemp.style.backgroundColor = "aqua";
         }
-        else{
-            divTemp.style.backgroundColor = "green"
+        else if(timetag === hour){
+            divTemp.style.backgroundColor = "green";
         }
     }
 };
