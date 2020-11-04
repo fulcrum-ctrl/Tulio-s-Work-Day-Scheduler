@@ -1,41 +1,115 @@
 console.log(moment());
 //Current date & time
 let now = moment();
-
-//Displays string version of moment
-console.log("toString: " + now.toString());
-
-//Returns UTC
-//ISO 8601 is a standard of displaying time and date
-console.log("toISOString: " + now.toISOString());
-
-//Work on proper formatting later
-//document.querySelector("#currentDay").textContent = now.toString();
-
-
+let hour = now.format("k");
+console.log("This is the hour: " + hour);
 //Gives live feed of moment
 function update(){
     $('#currentDay').html(moment().format('D. MMMM YYYY H:mm:ss'));
 }
-
 setInterval(update, 1000);
 
-//Create rows columns as page loads
-//should I be appending to .row or .container?
-$(document).ready(function(){
-    //var businessHours = ["9 AM","10 AM", "11 AM", "12PM"];
-    for (count=0;count<8; count++){
-        var sideBar = $("<div>")
-        sideBar.addClass("col-sm-2 idkYet")
-        var toDoList = $("<div>");
-        var row = $("<div>");
-        row.addClass("row");
-        toDoList.addClass("col-sm-8 toDo");
-        var saveButton = $("<button>");
-        saveButton.addClass("saveBtn");
-        $(".container").append(row);
-        $(".row").append(sideBar);
-        $(".row").append(toDoList);
-        $(".row").append(saveButton);
+
+//var x = "toDoOne";
+//var y = document.getElementById(x);
+//console.log("This is y: " + y);
+//y.style.backgroundColor = "gray";
+
+function colorScheme(){
+    var listRet = ["toDoOne","toDoTwo","toDoThree","toDoFour","toDoFive","toDoSix","toDoSeven","toDoEight"];
+    for (index=0;index<9;index++){
+        var divTemp = document.getElementById(listRet[index]);
+        var timetag = divTemp.getAttribute("oClock");
+        if(timetag<hour){
+            divTemp.style.backgroundColor = "gray"
+        }
+        else if (timetag>hour){
+            
+            divTemp.style.backgroundColor = "aqua"
+        }
+        else{
+            divTemp.style.backgroundColor = "green"
+        }
     }
-})
+};
+
+setInterval(colorScheme,1000);
+
+$(document).ready(function(){
+var listRet = ["toDoOne","toDoTwo","toDoThree","toDoFour","toDoFive","toDoSix","toDoSeven","toDoEight"];
+var timeValue = 9;
+for (index=0;index<9;index++){
+    var entry = localStorage.getItem(index);
+    var putHere = document.getElementById(listRet[index]);
+    putHere.textContent = entry;
+    $(putHere).attr("oClock", timeValue);
+    timeValue = timeValue + 1;
+    //colorScheme();
+}
+});
+
+
+var saveOne = document.getElementById("buttonOne");
+saveOne.addEventListener("click",function(){
+    var tabOne = document.getElementById("toDoOne");
+    var storeOne = tabOne.textContent;
+    console.log("The button works and: " + storeOne);
+    localStorage.setItem("0",storeOne);
+    alert("Item Saved!");
+});
+var saveTwo = document.getElementById("buttonTwo");
+saveTwo.addEventListener("click",function(){
+    var tabTwo = document.getElementById("toDoTwo");
+    var storeTwo = tabTwo.textContent;
+    console.log("The button works and: " + storeTwo);
+    localStorage.setItem("1",storeTwo);
+    alert("Item Saved!");
+});
+var saveThree = document.getElementById("buttonThree");
+saveThree.addEventListener("click",function(){
+    var tabThree = document.getElementById("toDoThree");
+    var storeThree = tabThree.textContent;
+    console.log("The button works and: " + storeThree);
+    localStorage.setItem("2",storeThree);
+    alert("Item Saved!");
+});
+var saveFour = document.getElementById("buttonFour");
+saveFour.addEventListener("click",function(){
+    var tabFour = document.getElementById("toDoFour");
+    var storeFour = tabFour.textContent;
+    console.log("The button works and: " + storeFour);
+    localStorage.setItem("3",storeFour);
+    alert("Item Saved!");
+});
+var saveFive = document.getElementById("buttonFive");
+saveFive.addEventListener("click",function(){
+    var tabFive = document.getElementById("toDoFive");
+    var storeFive = tabFive.textContent;
+    console.log("The button works and: " + storeFive);
+    localStorage.setItem("4",storeFive);
+    alert("Item Saved!");
+});
+var saveSix = document.getElementById("buttonSix");
+saveSix.addEventListener("click",function(){
+    var tabSix = document.getElementById("toDoSix");
+    var storeSix = tabSix.textContent;
+    console.log("The button works and: " + storeSix);
+    localStorage.setItem("5",storeSix);
+    alert("Item Saved!");
+});
+var saveSeven = document.getElementById("buttonSeven");
+saveSeven.addEventListener("click",function(){
+    var tabSeven = document.getElementById("toDoSeven");
+    var storeSeven = tabSeven.textContent;
+    console.log("The button works and: " + storeSeven);
+    localStorage.setItem("6",storeSeven);
+    alert("Item Saved!");
+});
+var saveEight = document.getElementById("buttonEight");
+saveEight.addEventListener("click",function(){
+    var tabEight = document.getElementById("toDoEight");
+    var storeEight = tabEight.textContent;
+    console.log("The button works and: " + storeEight);
+    localStorage.setItem("7",storeEight);
+    alert("Item Saved!");
+});
