@@ -1,14 +1,22 @@
 console.log(moment());
+
 //Current date & time
 let now = moment();
+
+//formats date in hour and saves in variable
 let hour = now.format("k");
 console.log("This is the hour: " + hour);
+
 //Gives live feed of moment
 function update(){
     $('#currentDay').html(moment().format('D. MMMM YYYY H:mm:ss'));
 }
 setInterval(update, 1000);
 
+//Sets divs to change color according to time
+//gray for past events
+//green for present
+//aqua for future events
 function colorScheme(){
     var listRet = ["toDoOne","toDoTwo","toDoThree","toDoFour","toDoFive","toDoSix","toDoSeven","toDoEight"];
     for (index=0;index<9;index++){
@@ -29,6 +37,10 @@ function colorScheme(){
 
 setInterval(colorScheme,1000);
 
+//Retrieves previous values in local storage 
+//Displays content on appropriate divs
+//Gives divs the oClock attribute
+//This would be used to compare in colorScheme
 $(document).ready(function(){
 var listRet = ["toDoOne","toDoTwo","toDoThree","toDoFour","toDoFive","toDoSix","toDoSeven","toDoEight"];
 var timeValue = 9;
@@ -42,7 +54,9 @@ for (index=0;index<9;index++){
 }
 });
 
-
+//Save Functionality
+//Stores div content to local storage
+//Need to recode this part
 var saveOne = document.getElementById("buttonOne");
 saveOne.addEventListener("click",function(){
     var tabOne = document.getElementById("toDoOne");
