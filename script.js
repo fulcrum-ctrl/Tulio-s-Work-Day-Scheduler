@@ -1,54 +1,53 @@
 console.log(moment());
 //Current date & time
 let now = moment();
-
-//Displays string version of moment
-console.log("toString: " + now.toString());
-
-//Returns UTC
-//ISO 8601 is a standard of displaying time and date
-console.log("toISOString: " + now.toISOString());
-
-//Work on proper formatting later
-//document.querySelector("#currentDay").textContent = now.toString();
-
-
+let hour = now.format("k");
+console.log("This is the hour: " + hour);
 //Gives live feed of moment
 function update(){
     $('#currentDay').html(moment().format('D. MMMM YYYY H:mm:ss'));
 }
 setInterval(update, 1000);
 
-//Create rows columns as page loads
-//should I be appending to .row or .container?
-//Now got to assign different ID's to every button
-//but why tho
 
+//var x = "toDoOne";
+//var y = document.getElementById(x);
+//console.log("This is y: " + y);
+//y.style.backgroundColor = "gray";
 
-//Review for tonight:
+function colorScheme(){
+    var listRet = ["toDoOne","toDoTwo","toDoThree","toDoFour","toDoFive","toDoSix","toDoSeven","toDoEight"];
+    for (index=0;index<9;index++){
+        var divTemp = document.getElementById(listRet[index]);
+        var timetag = divTemp.getAttribute("oClock");
+        if(timetag<hour){
+            divTemp.style.backgroundColor = "gray"
+        }
+        else if (timetag>hour){
+            
+            divTemp.style.backgroundColor = "aqua"
+        }
+        else{
+            divTemp.style.backgroundColor = "green"
+        }
+    }
+};
 
-//var saveOne = document.getElementById("save1");
-//console.log(saveOne);
-//Why is this returning null?
-//saveOne.addEventListener("click",function(){
-//    alert("Sir, I was pressed.");
-//})
-//Create save button functionality
-//Store and callback
-//if condition for color scheme re: past, present, future
-//How to make content editable and storable
+setInterval(colorScheme,1000);
 
-//SOLUTION: HARD CODE ALL ELEMENTS
-
-//Define retrieve function
 $(document).ready(function(){
 var listRet = ["toDoOne","toDoTwo","toDoThree","toDoFour","toDoFive","toDoSix","toDoSeven","toDoEight"];
+var timeValue = 9;
 for (index=0;index<9;index++){
     var entry = localStorage.getItem(index);
     var putHere = document.getElementById(listRet[index]);
     putHere.textContent = entry;
+    $(putHere).attr("oClock", timeValue);
+    timeValue = timeValue + 1;
+    //colorScheme();
 }
 });
+
 
 var saveOne = document.getElementById("buttonOne");
 saveOne.addEventListener("click",function(){
