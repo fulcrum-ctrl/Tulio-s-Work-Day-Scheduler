@@ -14,10 +14,11 @@ function colorScheme(){
     for (index=0;index<9;index++){
         var divTemp = document.getElementById(listRet[index]);
         var timetag = divTemp.getAttribute("oClock");
-        if(timetag>hour){
+        if(timetag<hour){
+            //timetag is 9, hour is 2; 9<2 IS FALSE
             divTemp.style.backgroundColor = "lightgray";
         }
-        else if (timetag<hour){
+        else if (timetag>hour){
             divTemp.style.backgroundColor = "aqua";
         }
         else if(timetag === hour){
