@@ -19,11 +19,12 @@ setInterval(update, 1000);
 //aqua for future events
 function colorScheme(){
     var listRet = ["toDoOne","toDoTwo","toDoThree","toDoFour","toDoFive","toDoSix","toDoSeven","toDoEight"];
-    for (index=0;index<9;index++){
+    for (index=0;index<8;index++){
         var divTemp = document.getElementById(listRet[index]);
         var timetag = divTemp.getAttribute("oClock");
-        if(timetag<hour){
+        if(parseInt(timetag)<hour){
             //timetag is 9, hour is 2; 9<2 IS FALSE
+            //what's breaking in the first tag?
             divTemp.style.backgroundColor = "lightgray";
         }
         else if (timetag>hour){
@@ -44,13 +45,12 @@ setInterval(colorScheme,1000);
 $(document).ready(function(){
 var listRet = ["toDoOne","toDoTwo","toDoThree","toDoFour","toDoFive","toDoSix","toDoSeven","toDoEight"];
 var timeValue = 9;
-for (index=0;index<9;index++){
+for (index=0;index<8;index++){
     var entry = localStorage.getItem(index);
     var putHere = document.getElementById(listRet[index]);
     putHere.textContent = entry;
     $(putHere).attr("oClock", timeValue);
     timeValue = timeValue + 1;
-    //colorScheme();
 }
 });
 
